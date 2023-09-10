@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyectotienda.modelo.entidades;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.*;
 
 import java.io.Serializable;
@@ -22,7 +23,10 @@ public class Cliente implements Serializable {
      private String cedula;
      private String nombre;
      private String email;
-     @ElementCollection
-     private Map<String, String> telefono;
+//     @ElementCollection
+//     private Map<String, String> telefono;
+
+     @OneToMany(mappedBy = "cliente")
+     private List<Transaccion> transaccions;
 
 }

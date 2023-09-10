@@ -1,12 +1,10 @@
 package co.edu.uniquindio.proyectotienda.modelo.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Getter
@@ -21,7 +19,10 @@ public class Transaccion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     private LocalDateTime fecha;
-    private float totalPagado;
-    private MedioPago medioDePago;
-    private EstadoPago estadoPago;
+
+    @ManyToOne
+    private Cliente cliente;
+    @OneToOne
+    private Pago pago;
+
 }
